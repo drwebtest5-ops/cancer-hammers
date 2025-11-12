@@ -9,48 +9,35 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Impact', 'Arial Black', sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #2a2a2a;
+            --accent: #ff2a2a;
+            --text: #ffffff;
+            --text-secondary: #b0b0b0;
         }
 
         body {
-            background: #000;
-            color: #fff;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(139, 0, 0, 0.1) 0%, transparent 20%);
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Грязные текстуры */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(255, 0, 0, 0.03) 2px,
-                    rgba(255, 0, 0, 0.03) 4px
-                );
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        /* Header - Грязный и агрессивный */
+        /* Современный хедер */
         header {
-            background: linear-gradient(135deg, #2a0000 0%, #000 50%, #2a0000 100%);
-            border-bottom: 3px solid #8b0000;
-            padding: 1rem 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 0;
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(139, 0, 0, 0.5);
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -63,49 +50,49 @@
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ff0000;
-            text-shadow: 2px 2px 0 #000, 4px 4px 0 #8b0000;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .logo span {
-            color: #fff;
-            text-shadow: 2px 2px 0 #8b0000;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .nav-links a {
-            color: #fff;
+            color: var(--text);
             text-decoration: none;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 0.5rem 1rem;
-            border: 2px solid transparent;
+            font-weight: 500;
+            font-size: 1rem;
             transition: all 0.3s ease;
-            background: rgba(139, 0, 0, 0.3);
+            position: relative;
         }
 
-        .nav-links a:hover {
-            border: 2px solid #ff0000;
-            background: rgba(255, 0, 0, 0.2);
-            transform: skew(-5deg);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
         }
 
-        /* Hero Section - Мотоцикл и все дела */
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Герой секция */
         .hero {
             height: 100vh;
-            background: 
-                linear-gradient(rgba(0, 0, 0, 0.7), rgba(139, 0, 0, 0.3)),
-                url('https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(42, 42, 42, 0.8)),
+                        url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -113,167 +100,150 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
-            margin-top: 80px;
+            padding: 0 2rem;
+            margin-top: 0;
         }
 
         .hero-content h1 {
             font-size: 4rem;
+            font-weight: 800;
             margin-bottom: 1rem;
-            color: #ff0000;
-            text-shadow: 3px 3px 0 #000, 6px 6px 0 #8b0000;
-            text-transform: uppercase;
-            letter-spacing: 4px;
+            background: linear-gradient(135deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
         }
 
         .hero-content .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: #fff;
-            text-shadow: 2px 2px 0 #000;
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 300;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: #ff0000;
-            color: #000;
+        .stream-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stream-button {
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
             text-decoration: none;
-            border: 3px solid #000;
-            border-radius: 0;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
             transition: all 0.3s ease;
-            font-size: 1.2rem;
-            box-shadow: 5px 5px 0 #000;
+            backdrop-filter: blur(10px);
+            font-weight: 500;
         }
 
-        .cta-button:hover {
-            background: #000;
-            color: #ff0000;
-            border: 3px solid #ff0000;
-            transform: translate(3px, 3px);
-            box-shadow: 2px 2px 0 #000;
+        .stream-button:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 42, 42, 0.3);
         }
 
-        /* Концерты */
-        .concerts {
-            padding: 5rem 2rem;
-            background: #111;
-            border-top: 5px solid #8b0000;
-            border-bottom: 5px solid #8b0000;
+        /* Альбомы */
+        .albums {
+            padding: 8rem 2rem;
+            background: var(--secondary);
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             font-size: 2.5rem;
-            color: #ff0000;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 0 #000;
+            font-weight: 700;
+            color: var(--text);
         }
 
-        .concerts-grid {
-            max-width: 800px;
+        .albums-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .concert-item {
-            background: #1a0000;
-            border: 2px solid #8b0000;
+        .album-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
             padding: 2rem;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .concert-item:hover {
-            background: #2a0000;
-            border: 2px solid #ff0000;
-            transform: scale(1.02);
+        .album-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .concert-info h3 {
-            color: #fff;
+        .album-cover {
+            width: 250px;
+            height: 250px;
+            border-radius: 12px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .album-title {
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
-            font-size: 1.3rem;
+            color: var(--text);
         }
 
-        .concert-info p {
-            color: #ccc;
+        .album-year {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .buy-button {
+        .listen-button {
+            display: inline-block;
             padding: 10px 25px;
-            background: #ff0000;
-            color: #000;
+            background: var(--accent);
+            color: white;
             text-decoration: none;
-            border: 2px solid #000;
-            font-weight: bold;
-            text-transform: uppercase;
+            border-radius: 6px;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
 
-        .buy-button:hover {
-            background: #000;
-            color: #ff0000;
-            border: 2px solid #ff0000;
+        .listen-button:hover {
+            background: #ff1a1a;
+            transform: scale(1.05);
         }
 
         /* О группе */
         .about {
-            padding: 5rem 2rem;
-            background: #000;
+            padding: 8rem 2rem;
+            background: var(--primary);
         }
 
         .about-content {
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
             text-align: center;
             font-size: 1.2rem;
             line-height: 1.8;
-            color: #ccc;
-        }
-
-        /* Музыка */
-        .music {
-            padding: 5rem 2rem;
-            background: #111;
-        }
-
-        .music-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .album {
-            background: #1a0000;
-            border: 2px solid #8b0000;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .album img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border: 3px solid #000;
-            margin-bottom: 1rem;
+            color: var(--text-secondary);
         }
 
         /* Футер */
         footer {
-            background: #000;
-            border-top: 3px solid #8b0000;
-            padding: 3rem 2rem;
+            background: var(--secondary);
+            padding: 4rem 2rem;
             text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .social-links {
@@ -284,63 +254,54 @@
         }
 
         .social-links a {
-            color: #ff0000;
+            color: var(--text);
             font-size: 1.5rem;
             text-decoration: none;
-            padding: 10px;
-            border: 2px solid #ff0000;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
             transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            background: #ff0000;
-            color: #000;
-            transform: rotate(10deg);
+            background: var(--accent);
+            transform: translateY(-3px);
         }
 
         /* Адаптивность */
         @media (max-width: 768px) {
             .nav-links {
-                flex-direction: column;
-                gap: 1rem;
+                gap: 1.5rem;
             }
 
             .hero-content h1 {
                 font-size: 2.5rem;
             }
 
-            .concert-item {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
+            .albums-grid {
+                grid-template-columns: 1fr;
             }
 
-            .social-links {
-                flex-wrap: wrap;
+            .album-cover {
+                width: 200px;
+                height: 200px;
             }
         }
 
-        /* Эффект "потертости" */
-        .grunge-border {
-            border: 1px solid #8b0000;
-            position: relative;
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .grunge-border::before {
-            content: "";
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border: 1px solid #ff0000;
-            opacity: 0.3;
-            pointer-events: none;
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
         }
     </style>
 </head>
@@ -348,50 +309,43 @@
     <!-- Хедер -->
     <header>
         <nav class="nav-container">
-            <div class="logo">CANCER <span>HAMMERS</span></div>
+            <div class="logo">CANCER HAMMERS</div>
             <ul class="nav-links">
                 <li><a href="#home">Главная</a></li>
-                <li><a href="#concerts">Концерты</a></li>
-                <li><a href="#music">Музыка</a></li>
-                <li><a href="#about">О нас</a></li>
+                <li><a href="#albums">Альбомы</a></li>
+                <li><a href="#about">О группе</a></li>
                 <li><a href="#contact">Контакты</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Герой с мотоциклом -->
+    <!-- Герой секция -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Cancer Hammers</h1>
-            <div class="subtitle">ГРОМ, СТАЛЬ И ПАНК-РОК</div>
-            <a href="#concerts" class="cta-button">Билеты на концерты</a>
+        <div class="hero-content fade-in">
+            <h1>CANCER HAMMERS</h1>
+            <div class="subtitle">Современный русский рок с характером</div>
+            <div class="stream-links">
+                <a href="https://music.yandex.ru/artist/16792546" class="stream-button">Слушать в Яндекс.Музыке</a>
+                <a href="#" class="stream-button">Другие платформы</a>
+            </div>
         </div>
     </section>
 
-    <!-- Концерты -->
-    <section id="concerts" class="concerts">
-        <h2 class="section-title">Ближайшие концерты</h2>
-        <div class="concerts-grid">
-            <div class="concert-item grunge-border">
-                <div class="concert-info">
-                    <h3>Москва | 15.12.2024</h3>
-                    <p>Клуб "Гараж" | 20:00</p>
-                </div>
-                <a href="#" class="buy-button">Купить билет</a>
+    <!-- Альбомы -->
+    <section id="albums" class="albums">
+        <h2 class="section-title">Наши альбомы</h2>
+        <div class="albums-grid">
+            <div class="album-card fade-in">
+                <img src="https://i.imgur.com/ob8W8rA.png" alt="Self-Portrait" class="album-cover">
+                <h3 class="album-title">SELF-PORTRAIT</h3>
+                <p class="album-year">2024 • 8 треков</p>
+                <a href="https://music.yandex.ru/album/38708892" class="listen-button">Слушать</a>
             </div>
-            <div class="concert-item grunge-border">
-                <div class="concert-info">
-                    <h3>Санкт-Петербург | 20.12.2024</h3>
-                    <p>Арена "Металл" | 19:30</p>
-                </div>
-                <a href="#" class="buy-button">Купить билет</a>
-            </div>
-            <div class="concert-item grunge-border">
-                <div class="concert-info">
-                    <h3>Екатеринбург | 25.12.2024</h3>
-                    <p>Бар "Отвертка" | 21:00</p>
-                </div>
-                <a href="#" class="buy-button">Купить билет</a>
+            <div class="album-card fade-in">
+                <img src="https://i.imgur.com/V1cY3bG.png" alt="Гаустный Молот" class="album-cover">
+                <h3 class="album-title">ГАУСТНЫЙ МОЛОТ</h3>
+                <p class="album-year">2024 • 7 треков</p>
+                <a href="https://music.yandex.ru/album/38461870" class="listen-button">Слушать</a>
             </div>
         </div>
     </section>
@@ -400,43 +354,21 @@
     <section id="about" class="about">
         <h2 class="section-title">О Cancer Hammers</h2>
         <div class="about-content">
-            <p>Мы - Cancer Hammers. Родились в гараже, выросли на сцене. Наша музыка - это крик души, закованный в сталь гитарных рифов и ударных.</p>
-            <p>Более 100 концертов, 3 студийных альбома и море выпитого пива. Присоединяйся к нашему безумию!</p>
-        </div>
-    </section>
-
-    <!-- Музыка -->
-    <section id="music" class="music">
-        <h2 class="section-title">Наша музыка</h2>
-        <div class="music-grid">
-            <div class="album grunge-border">
-                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Альбом 1">
-                <h3>Steel Revolution</h3>
-                <p>2023 | 12 треков</p>
-            </div>
-            <div class="album grunge-border">
-                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Альбом 2">
-                <h3>Garage Demons</h3>
-                <p>2022 | 10 треков</p>
-            </div>
-            <div class="album grunge-border">
-                <img src="https://images.unsplash.com/photo-1571330735066-03aaa9429d89?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Альбом 3">
-                <h3>Rust & Blood</h3>
-                <p>2021 | 8 треков</p>
-            </div>
+            <p>CANCER HAMMERS — это современная рок-группа, создающая музыку на стыке альтернативного рока и пост-хардкора. Наши треки — это искренние эмоции, мощные гитарные рифы и тексты, которые заставляют задуматься.</p>
+            <p>В наших альбомах "Self-Portrait" и "Гаустный Молот" мы исследуем темы самоидентификации, человеческих отношений и вызовов современного мира.</p>
         </div>
     </section>
 
     <!-- Футер -->
     <footer id="contact">
         <div class="social-links">
+            <a href="#">VK</a>
+            <a href="#">TG</a>
             <a href="#">YT</a>
             <a href="#">IG</a>
-            <a href="#">SP</a>
-            <a href="#">TG</a>
         </div>
-        <p>© 2024 CANCER HAMMERS. ВСЕ ПРАВА ЗАЩИЩЕНЫ. ИЛИ НЕТ.</p>
-        <p>booking@cancerhammers.com | +7 (666) 666-13-13</p>
+        <p>© 2024 CANCER HAMMERS. Все права защищены.</p>
+        <p style="color: var(--text-secondary); margin-top: 1rem;">booking@cancerhammers.com</p>
     </footer>
 
     <script>
@@ -458,21 +390,33 @@
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(42, 0, 0, 0.95)';
+                header.style.background = 'rgba(26, 26, 26, 0.98)';
             } else {
-                header.style.background = 'linear-gradient(135deg, #2a0000 0%, #000 50%, #2a0000 100%)';
+                header.style.background = 'rgba(26, 26, 26, 0.95)';
             }
         });
 
-        // Случайные эффекты для кнопок
-        document.querySelectorAll('.buy-button, .cta-button').forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                this.style.transform = 'skew(-5deg) scale(1.05)';
+        // Анимация появления элементов
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
             });
-            
-            button.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-            });
+        }, observerOptions);
+
+        // Наблюдаем за элементами с анимацией
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
